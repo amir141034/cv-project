@@ -6,7 +6,7 @@
       <NuxtPage />
     </main>
     
-    <footer class="mt-10 py-6">
+    <footer class="absolute bottom-0 w-full mt-3 py-6">
       <p class="text-center px-4">Tip: Add missing keywords naturally</p>
     </footer>
   </div>
