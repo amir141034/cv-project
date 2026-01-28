@@ -2,8 +2,8 @@
   <div class="h-full px-4 py-6">
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-6">
-        <TextForm label="Resume Input" v-model="resumeText"/>
-        <TextForm label="Job Description" v-model="jobDescText"/>
+        <TextForm label="Resume Input" v-model="resumeText" @validity-change="updateResumeValidity"/>
+        <TextForm label="Job Description" v-model="jobDescText" @validity-change="updateJobDescValidity"/>
       </div>
       
       <div class="flex justify-center">
@@ -18,15 +18,20 @@
 </template>
 
 <script setup>
-const maxWords = 200
 const resumeText = ref('')
 const jobDescText = ref('')
+const isResumeValid = ref(false)
+const isJobDescValid = ref(false)
 
 const isButtonDisabled = computed(() => {
-  const resumeWords = resumeText.value.trim().split(/\s+/).length
-  const jobDescWords = jobDescText.value.trim().split(/\s+/).length
-  
-  return resumeWords === 0 || resumeWords > maxWords || 
-         jobDescWords === 0 || jobDescWords > maxWords
+  return !isResumeValid.value || !isJobDescValid.value
 })
+
+const updateResumeValidity = (valid) => {
+  isResumeValid.value = valid
+}
+
+const updateJobDescValidity = (valid) => {
+  isJobDescValid.value = valid
+}
 </script>

@@ -7,13 +7,13 @@
       </div>
     </div>
     <UTextarea
-      v-model="state.message"
-      placeholder="Paste text here"
-      class="w-full min-w-50"
-      :rows="6"
-      :maxrows="20"
-      :color="isValid ? undefined : 'error'"
-      autoresize
+        v-model="text"
+        placeholder="Paste text here"
+        class="w-full min-w-50"
+        :rows="6"
+        :maxrows="20"
+        :color="isValid ? undefined : 'error'"
+        autoresize
     />
   </div>
 </template>
@@ -21,25 +21,26 @@
 <script setup>
 const props = defineProps({
   label: String,
-  modelValue: String
+  modelValue: { type: String, default: '' }
 })
-const emit = defineEmits(['update:modelValue', 'text-submitted'])
+const emit = defineEmits(['update:modelValue', 'text-submitted', 'validity-change'])
 
 const maxWords = 200
-const isValid = computed(() => wordCount.value <= maxWords)
 
-const state = reactive({
-  message: props.modelValue || ''
+const text = computed({
+  get: () => props.modelValue,
+  set: (value) => {
+    emit('update:modelValue', value)
+    emit('text-submitted', value)
+    emit('validity-change', isValid.value)
+  }
 })
 
 const wordCount = computed(() => {
-  return state.message.trim().length === 0 
+  return text.value.trim().length === 0 
     ? 0 
-    : state.message.trim().split(/\s+/).length
+    : text.value.trim().split(/\s+/).length
 })
 
-watch(() => state.message, (newValue) => {
-  emit('update:modelValue', newValue)
-  emit('text-submitted', newValue)
-})
+const isValid = computed(() => wordCount.value <= maxWords)
 </script>
