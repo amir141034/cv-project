@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen">
-    <Navbar class="flex items-center justify-between gap-3 h-full" />
+    <Navbar />
     
     <main class="w-full overflow-x-hidden">
       <NuxtPage />

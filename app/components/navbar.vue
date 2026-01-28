@@ -4,7 +4,7 @@
        <h1>Resume Checker</h1>
     </template>
 
-    <UNavigationMenu :items="items" />
+    <!-- <UNavigationMenu :items="items" /> -->
 
     <template #right>
       <UColorModeButton />
