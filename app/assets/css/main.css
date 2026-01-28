@@ -1,23 +1,11 @@
-@import "tailwindcss/preflight";
+@import "tailwindcss";
+@import "@nuxt/ui";
 @tailwind utilities;
 
-body {
-    background-color: gray-100;
-    color: gray-900;
-    /* @apply bg-gray-100 text-gray-900; */
-}
-
-a { 
-    color: blue-600;
-    /* @apply text-blue-600 hover:text-blue-800; */
-}
-
-a :hover {
-    color: blue-800;
-    /* @apply text-blue-800; */
-}
+/* body {
+    @apply
+} */
 
 h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    /* @apply font-bold; */
+    @apply font-bold;
 }

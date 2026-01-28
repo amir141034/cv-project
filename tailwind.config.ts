@@ -1,5 +1,3 @@
-// tailwind.config.ts
-
 export default {
   content: {
     files: [

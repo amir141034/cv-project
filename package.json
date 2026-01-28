@@ -17,10 +17,12 @@
     "@nuxtjs/color-mode": "^4.0.0",
     "@vueuse/nuxt": "^14.1.0",
     "nuxt": "^4.2.2",
+    "tailwindcss": "^4.1.18",
     "vue": "^3.5.26",
     "vue-router": "^4.6.4"
   },
   "devDependencies": {
+    "@iconify-json/lucide": "^1.2.87",
     "@iconify-json/simple-icons": "^1.2.68"
   }
 }
