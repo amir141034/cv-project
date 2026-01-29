@@ -1,5 +1,5 @@
 <template>
-    <h2 class="text-2xl font-bold mb-4">Match Result</h2>
+    <h2 class="text-2xl font-bold mb-2">Match Result</h2>
     <UProgress v-model="value" status />
     <p class="text-lg">
         Your resume matches <span class="font-semibold text-green-600">{{ value }}%</span> of the job description.

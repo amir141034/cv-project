@@ -7,17 +7,25 @@
       </div>
       
       <div class="flex justify-center">
-        <UButton label="Check Match" :disabled="isButtonDisabled"/>
+        <UButton label="Check Match" :disabled="isButtonDisabled" @click="onClick"/>
+      </div>
+
+      <div class="mt-10">
+        <p class="whitespace-pre-wrap">{{ resultText }}</p>
       </div>
       
-      <div class="mt-10">
-        <MatchResult />
-      </div>
+      <template v-if="resultText">
+        <div class="mt-10">
+          <MatchResult :data="resultText"/>
+        </div>
+      </template>
     </div>
   </div>
 </template>
 
 <script setup>
+const {compareKeywords} = useExtractionLogic()
+const resultText = ref('')
 const resumeText = ref('')
 const jobDescText = ref('')
 const isResumeValid = ref(false)
@@ -33,5 +41,10 @@ const updateResumeValidity = (valid) => {
 
 const updateJobDescValidity = (valid) => {
   isJobDescValid.value = valid
+}
+
+const onClick = async() => {
+  const comparisonResult = compareKeywords(resumeText.value, jobDescText.value)
+  resultText.value = comparisonResult
 }
 </script>
