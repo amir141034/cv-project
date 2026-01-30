@@ -1,12 +1,8 @@
+import { KNOWN_PHRASES, STOPWORDS } from './usePhrases';
+
 export const useExtractionLogic = () => {
 
-const STOPWORDS = new Set([
-  "the", "and", "with", "for", "to", "in", "of", "a", "is",
-  "on", "as", "by", "an", "be", "are", "this", "that"
-]);
-
 const cleanText = (text) => {
-    console.log(text);
   return text
     .toLowerCase()
     .replace(/[^a-z\s]/g, " ")
@@ -22,14 +18,30 @@ const tokenize = (text) => {
 
 const extractKeywords = (text) => {
   const tokens = tokenize(text);
-  const frequency = {};
 
-  tokens.forEach(word => {
-    frequency[word] = (frequency[word] || 0) + 1;
+  const unigramsFreq = countFrequency(tokens);
+  const bigrams = generateBigrams(tokens);
+  const bigramsFreq = countFrequency(bigrams);
+
+  const keywords = new Set();
+
+  // Unigrams: keep words that appear >= 2 times
+  Object.entries(unigramsFreq).forEach(([word, count]) => {
+    if (count >= 2) {
+      keywords.add(word);
+    }
   });
 
-  // Keep words that appear at least twice
-  return Object.keys(frequency).filter(word => frequency[word] >= 2);
+  // Bigrams: keep frequent OR known phrases
+  Object.entries(bigramsFreq).forEach(([phrase, count]) => {
+    if (count >= 2 || KNOWN_PHRASES.has(phrase)) {
+      keywords.add(phrase);
+    }
+  });
+
+  console.log("Detected phrases:", Object.keys(bigramsFreq));
+
+  return Array.from(keywords);
 }
 
 const compareKeywords = (resumeText, jdText) => {
