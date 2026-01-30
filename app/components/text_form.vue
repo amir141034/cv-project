@@ -13,6 +13,7 @@
         :rows="6"
         :maxrows="20"
         :color="isValid ? undefined : 'error'"
+        :disabled="disabled"
         autoresize
     />
   </div>
@@ -21,6 +22,7 @@
 <script setup>
 const props = defineProps({
   label: String,
+  disabled: { type: Boolean, default: false },
   modelValue: { type: String, default: '' }
 })
 const emit = defineEmits(['update:modelValue', 'text-submitted', 'validity-change'])
