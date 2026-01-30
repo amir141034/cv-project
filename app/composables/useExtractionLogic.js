@@ -16,6 +16,14 @@ const tokenize = (text) => {
     .filter(word => word.length > 2 && !STOPWORDS.has(word));
 }
 
+const normalizeKeyword = (keyword) => {
+  return SYNONYMS[keyword] || keyword;
+}
+
+const normalizeKeywords = (keywords) => {
+  return keywords.map(k => normalizeKeyword(k));
+}
+
 const extractKeywords = (text) => {
   const tokens = tokenize(text);
 
@@ -45,8 +53,13 @@ const extractKeywords = (text) => {
 }
 
 const compareKeywords = (resumeText, jdText) => {
-  const resumeKeywords = new Set(extractKeywords(resumeText));
-  const jdKeywords = new Set(extractKeywords(jdText));
+  const resumeKeywords = new Set(
+    normalizeKeywords(extractKeywords(resumeText))
+  );
+
+  const jdKeywords = new Set(
+    normalizeKeywords(extractKeywords(jdText))
+  );
 
   const matched = [];
   const missing = [];
