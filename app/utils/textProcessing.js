@@ -12,10 +12,29 @@ export const tokenize = (text) => {
   return cleanText(text).split(" ");
 }
 
+export const normalizeToken = (word) => {
+  // libraries → library
+  if (word.endsWith("ies") && word.length > 4) {
+    return word.slice(0, -3) + "y";
+  }
+
+  // databases → database
+  if (word.endsWith("es") && word.length > 3) {
+    return word.slice(0, -2);
+  }
+
+  // models → model
+  if (word.endsWith("s") && word.length > 3) {
+    return word.slice(0, -1);
+  }
+
+  return word;
+}
+
 export const removeStopwords = (tokens) => {
-  return tokens.filter(
-    word => word.length > 2 && !STOPWORDS.has(word)
-  );
+  return tokens
+    .map(normalizeToken)
+    .filter(word => word.length > 2 && !STOPWORDS.has(word));
 }
 
 export const countFrequency = (items) => {

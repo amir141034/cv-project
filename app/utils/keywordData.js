@@ -479,3 +479,232 @@ export const KNOWN_PHRASES = new Set([
   "content management",
   "social media"
 ]);
+
+export const NO_SINGULARIZE = new Set([
+  // Tech & Cloud Services
+  "aws",
+  "gcp",
+  "ecs",
+  "eks",
+  "rds",
+  "kubernetes",
+  "jenkins",
+  "postgres",
+  "redis",
+  "analytics",
+  "statistics",
+  "graphics",
+  "dynamics",
+  "logistics",
+  
+  // Web & Design
+  "css",
+  "sass",
+  "less",
+  "canvas",
+  "photoshop",
+  "illustrator",
+  
+  // Analysis & Research
+  "analysis",
+  "thesis",
+  "basis",
+  "crisis",
+  "diagnosis",
+  "prognosis",
+  "synopsis",
+  "hypothesis",
+  "parenthesis",
+  "emphasis",
+  
+  // Series & Collections
+  "series",
+  "species",
+  "means",
+  "news",
+  
+  // Business & Finance
+  "sales",
+  "gross",
+  "business",
+  "economics",
+  "ethics",
+  "operations",
+  "headquarters",
+  "proceeds",
+  "earnings",
+  "savings",
+  "assets",
+  "goods",
+  "liabilities",
+  "securities",
+  "futures",
+  "commons",
+  "arrears",
+  
+  // Healthcare & Medical
+  "diabetes",
+  "measles",
+  "mumps",
+  "rabies",
+  "herpes",
+  "shingles",
+  "aids",
+  "sars",
+  "wellness",
+  "fitness",
+  "genetics",
+  "orthodontics",
+  "pediatrics",
+  "obstetrics",
+  "geriatrics",
+  "diagnostics",
+  
+  // Science & Mathematics
+  "mathematics",
+  "physics",
+  "electronics",
+  "robotics",
+  "optics",
+  "acoustics",
+  "thermodynamics",
+  "mechanics",
+  "bioinformatics",
+  "genomics",
+  "proteomics",
+  
+  // Education & Academia
+  "humanities",
+  "linguistics",
+  "phonetics",
+  "semantics",
+  "civics",
+  "athletics",
+  "aerobics",
+  "gymnastics",
+  
+  // General Terms
+  "scissors",
+  "pants",
+  "glasses",
+  "tweezers",
+  "pliers",
+  "tongs",
+  "trousers",
+  "binoculars",
+  "goggles",
+  "jeans",
+  "shorts",
+  "thanks",
+  "congratulations",
+  "regards",
+  "credentials",
+  "premises",
+  "outskirts",
+  "suds",
+  "dregs",
+  "grounds",
+  "odds",
+  "remains",
+  "riches",
+  "stairs",
+  "surroundings",
+  "tropics",
+  "utilities",
+  "victuals",
+  "works",
+  
+  // Proper Nouns & Brand Names
+  "reuters",
+  "forbes",
+  "times",
+  "ialis", //ialis inialis
+  "ialis",
+  
+  // Compound Words
+  "services",
+  "resources",
+  "relations",
+  "communications",
+  "systems",
+  "solutions",
+  "technologies",
+  
+  // Games & Entertainment
+  "darts",
+  "checkers",
+  "dominoes",
+  "billiards",
+  "cards",
+  
+  // Location/Geography
+  "netherlands",
+  "philippines",
+  "alps",
+  "andes",
+  "himalayas",
+  "bahamas",
+  "maldives",
+  
+  // Mass Nouns (uncountable)
+  "progress",
+  "access",
+  "success",
+  "stress",
+  "process",
+  "congress",
+  "recess",
+  
+  // Already Plural Forms
+  "clothes",
+  "police",
+  "people",
+  "cattle",
+  "poultry",
+  "vermin",
+  "clergy",
+  
+  // Industry Specific
+  "customs", // customs clearance
+  "damages", // legal damages
+  "communications", // field of study
+  "contents", // table of contents
+  "archives",
+  "barracks",
+  "chassis",
+  "corps",
+  "crossroads",
+  "gallows",
+  "innings",
+  "species",
+  "whereabouts"
+]);
+
+// Not a complete list and not implemented yet
+export const IRREGULAR_PLURALS = {
+  // Singular: Plural
+  "person": "people",
+  "child": "children",
+  "man": "men",
+  "woman": "women",
+  "tooth": "teeth",
+  "foot": "feet",
+  "mouse": "mice",
+  "goose": "geese",
+  "ox": "oxen",
+  "criterion": "criteria",
+  "phenomenon": "phenomena",
+  "datum": "data",
+  "curriculum": "curricula",
+  "bacterium": "bacteria",
+  "radius": "radii",
+  "focus": "foci",
+  "cactus": "cacti",
+  "fungus": "fungi",
+  "syllabus": "syllabi",
+  "alumnus": "alumni",
+  "index": "indices",
+  "matrix": "matrices",
+  "vertex": "vertices",
+  "appendix": "appendices"
+};
