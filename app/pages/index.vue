@@ -49,11 +49,4 @@ const onClick = () => {
     resultText.value = comparisonResult
   }
 }
-
-// const result = compareKeywords(resumeText, jdText);
-
-// const highlightedJD = highlightMissingKeywords(
-//   jdText,
-//   result.missing
-// );
 </script>
