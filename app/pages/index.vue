@@ -3,7 +3,7 @@
     <div class="max-w-6xl mx-auto">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 mb-6">
         <TextForm label="Resume Input" v-model="resumeText" :disabled="!!resultText" @validity-change="updateResumeValidity"/>
-        <TextForm label="Job Description" v-model="jobDescText"  :disabled="!!resultText" @validity-change="updateJobDescValidity"/>
+        <TextForm label="Job Description" v-model="jdText"  :disabled="!!resultText" @validity-change="updateJobDescValidity"/>
       </div>
       
       <div class="flex justify-center">
@@ -23,7 +23,7 @@
 const {compareKeywords} = useExtractionLogic()
 const resultText = ref('')
 const resumeText = ref('')
-const jobDescText = ref('')
+const jdText = ref('')
 const isResumeValid = ref(false)
 const isJobDescValid = ref(false)
 
@@ -43,10 +43,17 @@ const onClick = () => {
   if (resultText.value) {
     resultText.value = ''
     resumeText.value = ''
-    jobDescText.value = ''
+    jdText.value = ''
   } else {
-    const comparisonResult = compareKeywords(resumeText.value, jobDescText.value)
+    const comparisonResult = compareKeywords(resumeText.value, jdText.value)
     resultText.value = comparisonResult
   }
 }
+
+// const result = compareKeywords(resumeText, jdText);
+
+// const highlightedJD = highlightMissingKeywords(
+//   jdText,
+//   result.missing
+// );
 </script>

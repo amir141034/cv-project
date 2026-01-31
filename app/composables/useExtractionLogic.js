@@ -1,4 +1,4 @@
-import { KNOWN_PHRASES, STOPWORDS } from './usePhrases';
+import { STOPWORDS, SYNONYMS, KNOWN_PHRASES } from '@/utils/keywordData';
 
 export const useExtractionLogic = () => {
 
@@ -23,6 +23,30 @@ const normalizeKeyword = (keyword) => {
 const normalizeKeywords = (keywords) => {
   return keywords.map(k => normalizeKeyword(k));
 }
+
+// function escapeHtml(text) {
+//   return text
+//     .replace(/&/g, "&amp;")
+//     .replace(/</g, "&lt;")
+//     .replace(/>/g, "&gt;");
+// }
+
+// function highlightMissingKeywords(jdText, missingKeywords) {
+//   let highlightedText = escapeHtml(jdText);
+
+//   missingKeywords.forEach(keyword => {
+//     const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+//     const regex = new RegExp(`\\b${escapedKeyword}\\b`, "gi");
+
+//     highlightedText = highlightedText.replace(
+//       regex,
+//       `<mark class="bg-yellow-200 px-1 rounded">$&</mark>`
+//     );
+//   });
+
+//   return highlightedText;
+// }
 
 const extractKeywords = (text) => {
   const tokens = tokenize(text);
