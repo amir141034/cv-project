@@ -2,12 +2,12 @@ import {
   tokenize,
   removeStopwords,
   countFrequency,
-  generateBigrams
+  generateBigrams,
 } from "./textProcessing";
 
 import { KNOWN_PHRASES, SYNONYMS } from "./keywordData";
 
-export function extractKeywords(text) {
+export const extractKeywords = (text) => {
   const tokens = removeStopwords(tokenize(text));
 
   const unigramFreq = countFrequency(tokens);
@@ -33,11 +33,11 @@ export function extractKeywords(text) {
   return Array.from(keywords);
 }
 
-export function normalizeKeywords(keywords) {
+export const normalizeKeywords = (keywords) => {
   return keywords.map(k => SYNONYMS[k] || k);
 }
 
-export function compareKeywords(resumeText, jdText) {
+export const compareKeywords = (resumeText, jdText) => {
   const resumeKeywords = new Set(
     normalizeKeywords(extractKeywords(resumeText))
   );

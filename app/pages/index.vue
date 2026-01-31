@@ -14,13 +14,18 @@
         <div class="mt-10">
           <MatchResult :data="resultText"/>
         </div>
+        <div class="mt-10">
+          <h2 class="text-2xl font-bold mb-2">Highlighted Job Description</h2>
+          <HighlightJd :resumeText="resumeText" :jdText="jdText"/>
+        </div>
       </template>
     </div>
   </div>
 </template>
 
 <script setup>
-const {compareKeywords} = useExtractionLogic()
+import { compareKeywords } from '@/utils/keywordMatcher.js'
+
 const resultText = ref('')
 const resumeText = ref('')
 const jdText = ref('')

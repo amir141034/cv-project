@@ -40,3 +40,27 @@ export const generateBigrams = (tokens) => {
 
   return bigrams;
 }
+
+export const escapeHtml = (text) => {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+export const highlightMissingKeywords = (jdText, missingKeywords) => {
+  let highlightedText = escapeHtml(jdText);
+
+  missingKeywords.forEach(keyword => {
+    const escapedKeyword = keyword.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+    const regex = new RegExp(`\\b${escapedKeyword}\\b`, "gi");
+
+    highlightedText = highlightedText.replace(
+      regex,
+      `<mark class="bg-yellow-200 px-1 rounded">$&</mark>`
+    );
+  });
+
+  return highlightedText;
+}
