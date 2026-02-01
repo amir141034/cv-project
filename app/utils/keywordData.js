@@ -708,3 +708,28 @@ export const IRREGULAR_PLURALS = {
   "vertex": "vertices",
   "appendix": "appendices"
 };
+
+// V1.50 addition
+export const SKILL_CATEGORIES = {
+  technical: new Set([
+    "python",
+    "javascript",
+    "machine learning",
+    "data analysis",
+    "computer vision",
+    "sql",
+    "deep learning"
+  ]),
+  tools: new Set([
+    "aws",
+    "docker",
+    "git",
+    "linux"
+  ]),
+  soft: new Set([
+    "communication",
+    "team player",
+    "leadership",
+    "problem solving"
+  ])
+};
