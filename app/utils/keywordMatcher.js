@@ -1,12 +1,3 @@
-import {
-  tokenize,
-  removeStopwords,
-  countFrequency,
-  generateBigrams,
-} from "./textProcessing";
-
-import { KNOWN_PHRASES, SYNONYMS, SKILL_CATEGORIES } from "./keywordData";
-
 export const extractKeywords = (text) => {
   const tokens = removeStopwords(tokenize(text));
 
@@ -82,9 +73,9 @@ export const compareKeywords = (resumeText, jdText) => {
 }
 
 // v1.50
-export const getKeywordWeight = (keyword) => {
-  if (SKILL_CATEGORIES.technical.has(keyword)) return 3;
-  if (SKILL_CATEGORIES.tools.has(keyword)) return 2;
-  if (SKILL_CATEGORIES.soft.has(keyword)) return 1;
-  return 1;
-}
+// export const getKeywordWeight = (keyword) => {
+//   if (SKILL_CATEGORIES.technical.has(keyword)) return 3;
+//   if (SKILL_CATEGORIES.tools.has(keyword)) return 2;
+//   if (SKILL_CATEGORIES.soft.has(keyword)) return 1;
+//   return 1;
+// }

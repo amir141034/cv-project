@@ -9,9 +9,9 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { highlightMissingKeywords } from '@/utils/textProcessing.js'
-import { compareKeywords } from '@/utils/keywordMatcher.js'
+// import { computed } from 'vue'
+// import { highlightMissingKeywords } from '@/utils/textProcessing.js'
+// import { compareKeywords } from '@/utils/keywordMatcher.js'
 
 const props = defineProps({
   resumeText: {

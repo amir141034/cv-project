@@ -26,7 +26,6 @@
 </template>
 
 <script setup>
-import { compareKeywords } from '@/utils/keywordMatcher.js'
 
 const resultText = ref('')
 const resumeText = ref('')

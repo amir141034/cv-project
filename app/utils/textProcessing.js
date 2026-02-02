@@ -1,5 +1,3 @@
-import { STOPWORDS } from "./keywordData";
-
 export const cleanText = (text) => {
   return text
     .toLowerCase()
