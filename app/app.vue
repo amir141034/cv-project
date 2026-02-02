@@ -1,7 +1,8 @@
 <template>
   <div class="min-h-screen">
-    <Navbar />
-    
+    <!-- <Navbar /> -->
+     <TopBanner />
+  
     <main class="w-full overflow-x-hidden">
       <NuxtPage />
     </main>

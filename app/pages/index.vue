@@ -9,6 +9,8 @@
       <div class="flex justify-center">
         <UButton :label="`${resultText ? 'Clear Text' : 'Check Match'}`" :disabled="isButtonDisabled" @click="onClick"/>
       </div>
+
+      <USeparator class="my-10" />
       
       <template v-if="resultText">
         <div class="mt-10">

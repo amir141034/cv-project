@@ -20,22 +20,6 @@
             <p v-if="data.missing.length === 0" class="text-gray-500">No missing keywords. Great job!</p>
         </div>
     </div>
-    <div class="mt-6">
-        <h3 class="text-xl font-semibold mb-2">Highlights:</h3>
-        <ul class="list-disc list-inside">
-            <li>Strong experience in JavaScript and Vue.js</li>
-            <li>Relevant project management skills</li>
-            <li>Excellent communication abilities</li>
-        </ul>
-    </div>
-    <div class="mt-4">
-        <h3 class="text-xl font-semibold mb-2">Suggestions:</h3>
-        <ul class="list-disc list-inside">
-            <li>Include more keywords from the job description</li>
-            <li>Highlight specific achievements in previous roles</li>
-            <li>Emphasize relevant certifications or training</li>
-        </ul>
-    </div>
 </template>
 
 <script setup>
