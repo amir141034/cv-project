@@ -1,5 +1,8 @@
 <template>
-    <h2 class="flex justify-center text-2xl font-bold mb-2">Match Score: <span class="font-semibold text-green-600">{{ displayScore }}%</span></h2>
+    <h2 class="flex justify-center items-center gap-2 text-2xl font-bold mb-2">
+        <span>Match Score:</span>
+        <span class="font-semibold text-green-600">{{ displayScore }}%</span>
+    </h2>
     <UProgress v-model="displayScore" status />
     <div class="flex w-full justify-around mt-6 gap-4 max-md:flex-col">
         <div class="w-100">

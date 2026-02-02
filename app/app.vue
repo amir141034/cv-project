@@ -1,6 +1,5 @@
 <template>
   <div class="flex flex-col min-h-screen">
-    <!-- <Navbar /> -->
      <TopBanner />
   
     <main class="w-full overflow-x-hidden">
