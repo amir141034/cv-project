@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div class="flex flex-col min-h-screen">
     <!-- <Navbar /> -->
      <TopBanner />
   
