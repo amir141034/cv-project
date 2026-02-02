@@ -1,8 +1,11 @@
 <template>
-  <div
-    class="whitespace-pre-wrap text-sm leading-relaxed"
-    v-html="highlightedJD"
-  />
+  <h2 class="text-2xl font-bold mb-2">Highlighted Job Description</h2>
+  <UCard  variant="soft" class="mx-auto my-4 max-w-4xl">
+      <div
+      class="whitespace-pre-wrap text-sm leading-relaxed"
+      v-html="highlightedJD"
+    />
+  </UCard>
 </template>
 
 <script setup>

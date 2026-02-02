@@ -16,8 +16,8 @@
         <div class="mt-10">
           <MatchResult :data="resultText"/>
         </div>
+        <USeparator class="my-10"/>
         <div class="mt-10">
-          <h2 class="text-2xl font-bold mb-2">Highlighted Job Description</h2>
           <HighlightJd :resumeText="resumeText" :jdText="jdText"/>
         </div>
       </template>
