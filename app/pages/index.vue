@@ -13,13 +13,9 @@
       <USeparator class="my-10" />
       
       <template v-if="resultText">
-        <div class="mt-10">
-          <MatchResult :data="resultText"/>
-        </div>
+        <MatchResult :data="resultText" class="mt-10"/>
         <USeparator class="my-10"/>
-        <div class="mt-10">
-          <HighlightJd :resumeText="resumeText" :jdText="jdText"/>
-        </div>
+        <HighlightJd :resumeText="resumeText" :jdText="jdText" class="mt-10"/>
       </template>
     </div>
   </div>
@@ -52,6 +48,18 @@ const onClick = () => {
     jdText.value = ''
   } else {
     const comparisonResult = compareKeywords(resumeText.value, jdText.value)
+    // const detailedResult = compareKeywordsDetailed(resumeText.value, jdText.value)
+    console.log(comparisonResult)
+    // console.log('Weighted Score:', comparisonResult.score)
+    // console.log('Simple Score:', comparisonResult.simpleScore)
+    // console.log('Stats:', comparisonResult.stats)
+
+    // //Detailed comparison with breakdown
+    // console.log(detailedResult)
+    // console.log('Matched by category:', detailedResult.matchedBreakdown)
+    // console.log('Missing by category:', detailedResult.missingBreakdown)
+    // console.log('Recommendations:', detailedResult.recommendations)
+
     resultText.value = comparisonResult
   }
 }

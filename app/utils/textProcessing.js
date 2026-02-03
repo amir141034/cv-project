@@ -1,4 +1,6 @@
 export const cleanText = (text) => {
+  if (!text || typeof text !== 'string') return '';
+  
   return text
     .toLowerCase()
     .replace(/[^a-z\s]/g, " ")
@@ -6,18 +8,30 @@ export const cleanText = (text) => {
     .trim();
 }
 
+
 export const tokenize = (text) => {
-  return cleanText(text).split(" ");
+  const cleaned = cleanText(text);
+  return cleaned ? cleaned.split(" ").filter(Boolean) : [];
 }
 
 export const normalizeToken = (word) => {
+  // Skip if in NO_SINGULARIZE set
+  if (NO_SINGULARIZE.has(word)) {
+    return word;
+  }
+
   // libraries → library
   if (word.endsWith("ies") && word.length > 4) {
     return word.slice(0, -3) + "y";
   }
 
-  // databases → database
-  if (word.endsWith("es") && word.length > 3) {
+  // addresses, databases → address, database
+  if (word.endsWith("ses") && word.length > 4) {
+    return word.slice(0, -2);
+  }
+
+  // databases → database (when not ending in 'ses')
+  if (word.endsWith("es") && word.length > 3 && !word.endsWith("ses")) {
     return word.slice(0, -2);
   }
 
@@ -36,26 +50,44 @@ export const removeStopwords = (tokens) => {
 }
 
 export const countFrequency = (items) => {
-  const freq = {};
-  items.forEach(item => {
+  return items.reduce((freq, item) => {
     freq[item] = (freq[item] || 0) + 1;
-  });
-  return freq;
+    return freq;
+  }, {});
 }
 
 export const generateBigrams = (tokens) => {
   const bigrams = [];
+  const minLength = 2; // configurable threshold
 
   for (let i = 0; i < tokens.length - 1; i++) {
     const w1 = tokens[i];
     const w2 = tokens[i + 1];
 
-    if (w1.length > 2 && w2.length > 2) {
+    if (w1.length > minLength && w2.length > minLength) {
       bigrams.push(`${w1} ${w2}`);
     }
   }
 
   return bigrams;
+}
+
+// NEW: Generate trigrams for phrases like "machine learning engineer"
+export const generateTrigrams = (tokens) => {
+  const trigrams = [];
+  const minLength = 2;
+
+  for (let i = 0; i < tokens.length - 2; i++) {
+    const w1 = tokens[i];
+    const w2 = tokens[i + 1];
+    const w3 = tokens[i + 2];
+
+    if (w1.length > minLength && w2.length > minLength && w3.length > minLength) {
+      trigrams.push(`${w1} ${w2} ${w3}`);
+    }
+  }
+
+  return trigrams;
 }
 
 export const escapeHtml = (text) => {
