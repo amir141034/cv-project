@@ -1,14 +1,17 @@
 export const extractKeywords = (text, options = {}) => {
   const {
-    unigramThreshold = 2,
-    bigramThreshold = 2,
+    unigramThreshold = 1,  // Lowered default
+    bigramThreshold = 1,   // Lowered default
     trigramThreshold = 1,
     includeTrigrams = true
   } = options;
 
   const tokens = removeStopwords(tokenize(text));
   
-  if (tokens.length === 0) return [];
+  if (tokens.length === 0) {
+    console.warn('No tokens after stopword removal');
+    return [];
+  }
 
   const unigramFreq = countFrequency(tokens);
   const bigrams = generateBigrams(tokens);
@@ -16,14 +19,14 @@ export const extractKeywords = (text, options = {}) => {
   
   const keywords = new Set();
 
-  // Add known phrases first (highest priority)
   bigrams.forEach(phrase => {
     if (KNOWN_PHRASES.has(phrase)) {
+      console.log('Adding known phrase:', phrase);
       keywords.add(phrase);
     }
   });
 
-  // Trigrams (for 3-word phrases)
+  // Trigrams first (longest phrases have priority)
   if (includeTrigrams) {
     const trigrams = generateTrigrams(tokens);
     const trigramFreq = countFrequency(trigrams);
@@ -35,19 +38,18 @@ export const extractKeywords = (text, options = {}) => {
     });
   }
 
-  // Bigrams
-  Object.entries(bigramFreq).forEach(([phrase, count]) => {
-    if (count >= bigramThreshold) {
+  // Bigrams (including known phrases)
+  bigrams.forEach(phrase => {
+    if ((bigramFreq[phrase] >= bigramThreshold)) {
       keywords.add(phrase);
     }
   });
 
-  // Unigrams (only if not part of a bigram/trigram already added)
+  // Unigrams (only if not part of a phrase)
   Object.entries(unigramFreq).forEach(([word, count]) => {
     if (count >= unigramThreshold) {
-      // Check if word is already part of a phrase
       const isInPhrase = Array.from(keywords).some(phrase => 
-        phrase.includes(word) && phrase !== word
+        phrase.split(' ').includes(word) && phrase !== word
       );
       
       if (!isInPhrase) {

@@ -9,7 +9,6 @@ export const cleanText = (text) => {
     .trim();
 }
 
-
 export const tokenize = (text) => {
   const cleaned = cleanText(text);
   return cleaned ? cleaned.split(" ").filter(Boolean) : [];

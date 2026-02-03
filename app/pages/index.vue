@@ -47,7 +47,7 @@ const updateJobDescValidity = (valid) => {
 }
 
 const onCheckText = () => {
-    const result = removeStopwords(tokenize(resumeText.value))
+    const result = extractKeywords(resumeText.value)
     checkText.value = result
 }
 
