@@ -15,28 +15,25 @@ export const tokenize = (text) => {
 }
 
 export const normalizeToken = (word) => {
+  if (!word || word.length <= 2) return word;
+  
   // Skip if in NO_SINGULARIZE set
   if (NO_SINGULARIZE.has(word)) {
     return word;
   }
 
-  // libraries → library
+  // Check exact mapping first (most reliable and comprehensive)
+  if (PLURAL_TO_SINGULAR.has(word)) {
+    return PLURAL_TO_SINGULAR.get(word);
+  }
+
+  // Fallback rule: -ies → -y (for words not in mapping)
   if (word.endsWith("ies") && word.length > 4) {
     return word.slice(0, -3) + "y";
   }
 
-  // addresses, databases → address, database
-  if (word.endsWith("ses") && word.length > 4) {
-    return word.slice(0, -2);
-  }
-
-  // databases → database (when not ending in 'ses')
-  if (word.endsWith("es") && word.length > 3 && !word.endsWith("ses")) {
-    return word.slice(0, -2);
-  }
-
-  // models → model
-  if (word.endsWith("s") && word.length > 3) {
+  // Fallback rule: simple -s removal (for words not in mapping)
+  if (word.endsWith("s") && !word.endsWith("ss") && word.length > 3) {
     return word.slice(0, -1);
   }
 

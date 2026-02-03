@@ -8,15 +8,19 @@
       
       <div class="flex justify-center">
         <UButton :label="`${resultText ? 'Clear Text' : 'Check Match'}`" :disabled="isButtonDisabled" @click="onCheckMatch"/>
+        <UButton label="Check Text" @click="onCheckText"/>
       </div>
 
       <USeparator class="my-10" />
       
-      <template v-if="resultText">
+      <div>
+        {{ checkText }}
+      </div>
+      <!-- <template v-if="resultText">
         <MatchResult :data="resultText" class="mt-10"/>
         <USeparator class="my-10"/>
         <HighlightJd :resumeText="resumeText" :jdText="jdText" class="mt-10"/>
-      </template>
+      </template> -->
     </div>
   </div>
 </template>
@@ -24,6 +28,7 @@
 <script setup>
 
 const resultText = ref('')
+const checkText = ref('')
 const resumeText = ref('')
 const jdText = ref('')
 const isResumeValid = ref(false)
@@ -39,6 +44,11 @@ const updateResumeValidity = (valid) => {
 
 const updateJobDescValidity = (valid) => {
   isJobDescValid.value = valid
+}
+
+const onCheckText = () => {
+    const result = removeStopwords(tokenize(resumeText.value))
+    checkText.value = result
 }
 
 const onCheckMatch = () => {
