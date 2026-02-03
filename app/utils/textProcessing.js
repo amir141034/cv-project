@@ -15,7 +15,7 @@ export const tokenize = (text) => {
 }
 
 export const normalizeToken = (word) => {
-  // if (!word || word.length <= 2) return word;
+  if (!word || word.length <= 2) return word;
   
   // Skip if in NO_SINGULARIZE set
   if (NO_SINGULARIZE.has(word)) {
@@ -55,7 +55,7 @@ export const countFrequency = (items) => {
 
 export const generateBigrams = (tokens) => {
   const bigrams = [];
-  const minLength = 2; // configurable threshold
+  const minLength = 1; // configurable threshold
 
   for (let i = 0; i < tokens.length - 1; i++) {
     const w1 = tokens[i];

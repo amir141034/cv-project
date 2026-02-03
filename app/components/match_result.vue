@@ -9,7 +9,7 @@
             <div class="w-100">
                 <h3 class="text-xl font-semibold">Matched Keywords:</h3>
                 <USeparator type="dashed" class="my-4"/>
-                <ul class="border border-gray-300 p-3 rounded-lg list-none">
+                <ul class="border border-gray-300 p-3 rounded-lg list-none max-h-150 overflow-y-auto">
                     <li v-for="keyword in data.matched" :key="keyword">✅ {{ keyword }}</li>
                 </ul>
                 <p v-if="data.matched.length === 0" class="text-gray-500">No matched keywords found.</p>
@@ -17,7 +17,7 @@
             <div class="w-100">
                 <h3 class="text-xl font-semibold">Missing Keywords:</h3>
                 <USeparator type="dashed" class="my-4"/>
-                <ul class="border border-gray-300 p-3 rounded-lg list-none">
+                <ul class="border border-gray-300 p-3 rounded-lg list-none max-h-150 overflow-y-auto">
                     <li v-for="keyword in data.missing" :key="keyword">❌ {{ keyword }}</li>
                 </ul>
                 <p v-if="data.missing.length === 0" class="text-gray-500">No missing keywords. Great job!</p>
@@ -39,7 +39,7 @@ const displayScore = ref(0)
 onMounted(() => {
   const duration = 1500 // 1.5 seconds
   const steps = 60
-  const increment = props.data.score / steps
+  const increment = props.data.simpleScore / steps
   const stepDuration = duration / steps
   
   let currentStep = 0

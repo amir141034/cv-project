@@ -27,7 +27,7 @@ const props = defineProps({
 })
 const emit = defineEmits(['update:modelValue', 'text-submitted', 'validity-change'])
 
-const maxWords = 500
+const maxWords = 200
 
 const text = computed({
   get: () => props.modelValue,

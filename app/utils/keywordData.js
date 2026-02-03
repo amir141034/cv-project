@@ -57,9 +57,7 @@ export const SYNONYMS = {
   "fs": "fsharp",
   "f#": "fsharp",
   ".net": "dotnet",
-  "dotnet": "dotnet",
   "node": "nodejs",
-  "nodejs": "nodejs",
   "node.js": "nodejs",
   "vue": "vuejs",
   "react": "reactjs",
@@ -120,26 +118,26 @@ export const SYNONYMS = {
   "ansible": "configuration management",
   
   // Frontend
-  "html": "hypertext markup language",
-  "css": "cascading style sheets",
+  // "html": "hypertext markup language",
+  // "css": "cascading style sheets",
   "ui": "user interface",
   "ux": "user experience",
   "spa": "single page application",
   "pwa": "progressive web application",
   "dom": "document object model",
   "jsx": "javascript xml",
-  "sass": "syntactically awesome style sheets",
+  // "sass": "syntactically awesome style sheets",
   "webpack": "module bundler",
   
   // Backend & APIs
-  "api": "application programming interface",
-  "rest": "representational state transfer",
+  // "api": "application programming interface",
+  // "rest": "representational state transfer",
   "restful": "rest api",
-  "graphql": "graph query language",
-  "crud": "create read update delete",
+  // "graphql": "graph query language",
+  // "crud": "create read update delete",
   "orm": "object relational mapping",
   "mvc": "model view controller",
-  "jwt": "json web token",
+  // "jwt": "json web token",
   "oauth": "open authorization",
   "soap": "simple object access protocol",
   
@@ -731,7 +729,10 @@ export const NO_SINGULARIZE = new Set([
   "its",
   "yes",
   "does",
-  "has"
+  "has",
+
+  //Synonym
+  "rdbms",
 ]);
 
 // Complete plural to singular mapping
