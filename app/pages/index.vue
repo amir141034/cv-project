@@ -7,7 +7,7 @@
       </div>
       
       <div class="flex justify-center">
-        <UButton :label="`${resultText ? 'Clear Text' : 'Check Match'}`" :disabled="isButtonDisabled" @click="onClick"/>
+        <UButton :label="`${resultText ? 'Clear Text' : 'Check Match'}`" :disabled="isButtonDisabled" @click="onCheckMatch"/>
       </div>
 
       <USeparator class="my-10" />
@@ -41,7 +41,7 @@ const updateJobDescValidity = (valid) => {
   isJobDescValid.value = valid
 }
 
-const onClick = () => {
+const onCheckMatch = () => {
   if (resultText.value) {
     resultText.value = ''
     resumeText.value = ''
