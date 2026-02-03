@@ -3,7 +3,8 @@ export const cleanText = (text) => {
   
   return text
     .toLowerCase()
-    .replace(/[^a-z\s]/g, " ")
+    // Preserve +, #, and other tech symbols, replace others with space
+    .replace(/[^a-z0-9+#\s]/g, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -15,7 +16,7 @@ export const tokenize = (text) => {
 }
 
 export const normalizeToken = (word) => {
-  if (!word || word.length <= 2) return word;
+  // if (!word || word.length <= 2) return word;
   
   // Skip if in NO_SINGULARIZE set
   if (NO_SINGULARIZE.has(word)) {
@@ -43,7 +44,7 @@ export const normalizeToken = (word) => {
 export const removeStopwords = (tokens) => {
   return tokens
     .map(normalizeToken)
-    .filter(word => word.length > 2 && !STOPWORDS.has(word));
+    .filter(word => word.length > 1 && !STOPWORDS.has(word));
 }
 
 export const countFrequency = (items) => {
