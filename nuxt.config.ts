@@ -5,9 +5,9 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   app: {
     head: {
-      title: 'Resume Checker',
+      title: "Resume Keyword Checker",
       meta: [
-        { name: 'application-name', content: 'Resume Checker' }
+        { name: "description", content: "Check how well your resume matches a job description" }
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.svg' }
